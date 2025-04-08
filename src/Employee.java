@@ -7,8 +7,11 @@ public class Employee {
         this.secondName = secondName;
     }
 
-    public String getEmployeeName() {
-        return firstName, secondName;
+    public String getFirstNameName() {
+        return firstName;
+    }
+    public String getSecondName(){
+        return secondName;
     }
 
     public void setEmployeeName(String firstName, String secondName) {

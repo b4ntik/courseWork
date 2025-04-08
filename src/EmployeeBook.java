@@ -1,16 +1,17 @@
 public class EmployeeBook {
     private String firstName;
     private String secondName;
+    private Employee employee;
     private int salary;
 
-    public EmployeeBook(String firstName, String secondName, int salary) {
-        this.firstName = firstName;
-        this.secondName = secondName;
+    public EmployeeBook(Employee employee, int salary) {
+        this.employee = employee;
+        //this.secondName = secondName;
         this.salary = salary;
     }
 
-    public boolean setEmployeeBook(String firstName, String secondName, int salary) {
-        //поиск свободного места в массиве и добавление нового сотрудника
+    public boolean setEmployeeBook(Employee employee, int salary) {
+        //поиск свободного места в массиве и добавление нового сотрудника с какой-то зарплатой
 
         return true;
     }
