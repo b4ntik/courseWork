@@ -1,5 +1,10 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+
+        EmployeeBook[] employees = new EmployeeBook[5];
+        employees.setEmployeeBook = new EmployeeBook("Ivan", "Ivanov", 85000);
+
+
+
     }
 }
