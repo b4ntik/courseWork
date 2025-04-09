@@ -2,45 +2,41 @@
 public class EmployeeBook {
 
     private Employee[] employees;
-    private int count;
-    private int[] salaries;
+
 
     //создаю массивы сотрудников и зарплат из 5 элементов при вызове этого метода
     public EmployeeBook() {
         employees = new Employee[5];
-        salaries = new int[5];
-        count = 0;
     }
 
     //добавляю сотрудника
-    public void addEmployee(Employee employee, int salary) {
-
-
-            if (count < employees.length && employees[count] == null) {
-
-                employees[count] = employee;
-                salaries[count] = salary;
-                count++;
-
-            } else {
-                System.out.println("Нет свободных мест для добавления сотрудника.");
+    public void addEmployee(Employee employee) {
+        boolean added = false;
+        for (int i = 0; i < employees.length; i++) {
+            if ( employees[i] == null) {
+                employees[i] = employee;
+                added = true;
+                break;
             }
         }
-
+                if (!added) {
+                    System.out.println("Нет свободных мест для добавления сотрудника.");
+            }
+        }
 
     public void deleteEmployee(int id) {
 
-        for (Employee employee : employees) {
+        for (int i = 0; i < employees.length; i++) {
             if (employees[id] != null) {
                 employees[id] = null;
-                salaries[id] = 0;
             }
         }
     }
-    //метод для поиска минимальной зарплаты
-    public String findMinSalary() {
 
-        if (salaries == null || salaries.length == 0) {
+    //метод для поиска минимальной зарплаты
+   /* public String findMinSalary() {
+
+        if (count == 0 ) {
             return "Список зарплат пуст"; // Обработка пустого массива
         }
         int min = salaries[0];
@@ -93,12 +89,12 @@ public class EmployeeBook {
         }
         return "Затраты на ФОП " + salary;
     }
-
+*/
     public String getEmployee(int id) {
         StringBuilder getEmployee = new StringBuilder();
         if (id >= 0 && id < employees.length) {
             if (employees[id] != null) {
-                getEmployee.append("Employee: ").append(employees[id]);
+                getEmployee.append(employees[id]);
                 return getEmployee.toString();
             }
         }
@@ -107,9 +103,9 @@ public class EmployeeBook {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("EmployeeBook: \n");
-        for (int i = 0; i < count; i++) {
-            sb.append("Employee: ").append(employees[i]).append(", Salary: ").append(salaries[i]).append("\n");
+        StringBuilder sb = new StringBuilder("Список сотрудников: \n");
+        for (int i = 0; i < employees.length; i++) {
+            sb.append(employees[i]).append("\n");
         }
         return sb.toString();
     }
