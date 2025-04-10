@@ -9,87 +9,79 @@ public class EmployeeBook {
         employees = new Employee[5];
     }
 
-    //добавляю сотрудника
+    //добавляю сотрудника - переделал на цикл
     public void addEmployee(Employee employee) {
         boolean added = false;
         for (int i = 0; i < employees.length; i++) {
-            if ( employees[i] == null) {
+            if (employees[i] == null) {
                 employees[i] = employee;
                 added = true;
                 break;
             }
         }
-                if (!added) {
-                    System.out.println("Нет свободных мест для добавления сотрудника.");
-            }
+        if (!added) {
+            System.out.println("Нет свободных мест для добавления сотрудника.");
         }
+    }
 
     public void deleteEmployee(int id) {
 
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[id] != null) {
+        for (Employee employee : employees) {
+            if (employee != null && employee.getId() == id) {
                 employees[id] = null;
             }
         }
     }
 
     //метод для поиска минимальной зарплаты
-   /* public String findMinSalary() {
+    public Employee findMinSalary() {
 
-        if (count == 0 ) {
-            return "Список зарплат пуст"; // Обработка пустого массива
-        }
-        int min = salaries[0];
-        for (int i = 1; i < salaries.length; i++) {
-            if (salaries[i]< min && salaries[i] != 0) {
-                min = salaries[i];
+        Employee minSalary = employees[0];
+        for (Employee employee : employees) {
+            if (employee != null && employee.getSalary() < minSalary.getSalary()) {
+                minSalary = employee;
             }
-
         }
-        return "Минимальная зарплата в коллективе " + min;
+        return minSalary;
     }
+
     //метод для поиска максимальной зарплаты
-    public String findMaxSalary() {
-        if (salaries == null || salaries.length == 0) {
-            return "Список зарплат пуст"; // Обработка пустого массива
-        }
-        int max = salaries[0];
-        for (int i = 1; i < salaries.length; i++) {
-            if (salaries[i]> max && salaries[i] != 0) {
-                max = salaries[i];
+    public Employee findMaxSalary() {
+
+        Employee maxSalary = employees[0];
+        for (Employee employee : employees) {
+            if (employee != null && employee.getSalary() > maxSalary.getSalary()) {
+                maxSalary = employee;
             }
         }
-        return "Максимальная зарплата в коллективе " + max;
+        return maxSalary;
     }
-    public String findAverageSalary() {
-        if (salaries == null || salaries.length == 0) {
-            return "Список зарплат пуст"; // Обработка пустого массива
-        }
-        int average = 0;
+
+    public int findAverageSalary() {
+        int salary = 0;
         int countSalary = 0;
-        for (int i = 0; i < salaries.length; i++) {
-            if (salaries[i] != 0) {
-                average += salaries[i];
+        for (Employee employee : employees) {
+            if (employee != null) {
+                salary += employee.getSalary();
                 countSalary++;
             }
         }
-        return "Средняя зарплата в коллективе " + average/countSalary;
+        return salary / countSalary;
     }
-    public String findAllSalary() {
-        if (salaries == null || salaries.length == 0) {
-            return "Список зарплат пуст"; // Обработка пустого массива
-        }
-        int salary = 0;
 
-        for (int i = 0; i < salaries.length; i++) {
-            if (salaries[i] != 0) {
-                salary += salaries[i];
+    public int findAllSalary() {
+
+        int allSalary = 0;
+        for (Employee employee : employees) {
+            if (employee != null) {
+                allSalary += employee.getSalary();
 
             }
         }
-        return "Затраты на ФОП " + salary;
+        return allSalary;
     }
-*/
+
+
     public String getEmployee(int id) {
         StringBuilder getEmployee = new StringBuilder();
         if (id >= 0 && id < employees.length) {

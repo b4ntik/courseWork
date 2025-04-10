@@ -3,9 +3,9 @@ public class Main {
         //создаю новый список сотрудников
         EmployeeBook employeeBook = new EmployeeBook();
         //создаю новых сотрудников
-        Employee employee1 = new Employee("Ivan", "Ivanov", 85000, "Sale", 1);
-        Employee employee2 = new Employee("Petr", "Petrov", 60000, "Sale", 2);
-        Employee employee3 = new Employee("Igor", "Igorev", 100000, "SalesManager", 3);
+        Employee employee1 = new Employee("Ivan", "Ivanov", 85000, "Sale");
+        Employee employee2 = new Employee("Petr", "Petrov", 60000, "HR");
+        Employee employee3 = new Employee("Igor", "Igorev", 100000, "SalesManager");
 
         //заношу сотрудников в список сотрудников с какой-то зарплатой
         employeeBook.addEmployee(employee1);
@@ -16,9 +16,8 @@ public class Main {
         System.out.println(employeeBook);
 
         //удаление сотрудника
-       employeeBook.deleteEmployee(1);
+        employeeBook.deleteEmployee(1);
 
-       // employeeBook.addEmployee(employee2);
         //список сотрудников
         System.out.println(employeeBook);
 
@@ -27,17 +26,18 @@ public class Main {
         //ищем несуществующего сотрудника
         System.out.println(employeeBook.getEmployee(10));
         //минимальная зарплата
-        //System.out.println(employeeBook.findMinSalary());
+        System.out.println("Сотрудник с минимальной зарплатой: " + employeeBook.findMinSalary());
         //максимальная зарплата
-       // System.out.println(employeeBook.findMaxSalary());
+        System.out.println("Сотрудник с максимальной зарплатой: " + employeeBook.findMaxSalary());
         //средняя зарплата
-        //System.out.println(employeeBook.findAverageSalary());
+        System.out.println("Средняя зарплата в фирме: " + employeeBook.findAverageSalary());
         //общая зарплата
-        //System.out.println(employeeBook.findAllSalary());
+        System.out.println("Затраты на ФОП в фирме: " + employeeBook.findAllSalary());
 
         employee1.setSecondName("Petrov");
 
         System.out.println(employeeBook);
+
 
     }
 }
